@@ -1,5 +1,8 @@
 package com.clone.magabox.entity;
 
+import com.clone.magabox.dto.request.StartTimeRequestDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +11,9 @@ import java.time.LocalTime;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class StartTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +27,4 @@ public class StartTime {
     @Column(nullable = false)
     private LocalTime localTime;
 
-//    public StartTime(StartTimeRequestDto startTimeRequestDto) {
-//
-//    }
 }
