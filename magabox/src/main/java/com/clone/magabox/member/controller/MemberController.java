@@ -1,0 +1,50 @@
+package com.clone.magabox.member.controller;
+
+
+import com.clone.magabox.dto.request.MemberRequestDto;
+import com.clone.magabox.dto.request.TokenRequestDto;
+import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.entity.TokenDto;
+import com.clone.magabox.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/members")
+public class MemberController {
+
+    private final MemberService memberService;
+
+    /*
+     * 회원가입
+     */
+    @PostMapping("/signup")
+    public ResponseDto<?> signup(@RequestBody MemberRequestDto memberRequestDto) {
+        return memberService.signup(memberRequestDto);
+    }
+
+    /*
+     * 로그인
+     */
+    @PostMapping("/login")
+    public ResponseDto<?> login(@RequestBody MemberRequestDto memberRequestDto, HttpServletResponse response) {
+        return memberService.login(memberRequestDto, response);
+    }
+
+    /*
+     * 중복확인
+     */
+    @GetMapping("/{memberId}")
+    public ResponseDto<?> userInfo(@PathVariable("memberId") Long id){
+        return memberService.getUser(id);
+    }
+
+    @PostMapping("/reissue")
+    public ResponseDto<?> reissue(@RequestBody TokenRequestDto tokenRequestDto) {
+        TokenDto tokenDto = new TokenDto();
+        return ResponseDto.success(tokenDto);
+    }
+}
