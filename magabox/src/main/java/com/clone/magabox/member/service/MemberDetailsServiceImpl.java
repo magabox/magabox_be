@@ -2,7 +2,7 @@ package com.clone.magabox.member.service;
 
 
 import com.clone.magabox.entity.Member;
-import com.clone.magabox.repository.MemberRepository;
+import com.clone.magabox.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

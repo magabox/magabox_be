@@ -1,4 +1,4 @@
-package com.clone.magabox.repository;
+package com.clone.magabox.jwt.repository;
 
 
 import com.clone.magabox.entity.RefreshToken;

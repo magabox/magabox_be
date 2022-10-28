@@ -3,7 +3,7 @@ package com.clone.magabox.jwt.security;
 import com.clone.magabox.entity.Member;
 import com.clone.magabox.entity.TokenDto;
 import com.clone.magabox.member.service.MemberDetailsImpl;
-import com.clone.magabox.repository.MemberRepository;
+import com.clone.magabox.member.repository.MemberRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;

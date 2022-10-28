@@ -1,4 +1,4 @@
-package com.clone.magabox.repository;
+package com.clone.magabox.member.repository;
 
 import com.clone.magabox.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
