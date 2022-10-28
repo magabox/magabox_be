@@ -19,12 +19,17 @@ public class StartTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO Cascade type?
+    // TODO: Cascade type?
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MOVIE_ID", nullable = false)
     private Movie movie;
 
     @Column(nullable = false)
-    private LocalTime localTime;
+    private LocalTime startingTime;
 
+    private int capacity;
+
+    public void addViewers(int num) {
+        this.capacity -= num;
+    }
 }
