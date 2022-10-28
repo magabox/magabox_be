@@ -31,9 +31,6 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private ERole erole;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
-    private List<Comment> commentList = new ArrayList<>();
-
 
 //    public Member(MemberRequestDto requestDto, PasswordEncoder passwordEncoder) {
 //        this.name = requestDto.getName();
