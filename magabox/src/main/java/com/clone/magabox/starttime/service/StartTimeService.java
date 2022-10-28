@@ -2,8 +2,10 @@ package com.clone.magabox.starttime.service;
 
 import com.clone.magabox.dto.request.StartTimeRequestDto;
 import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.entity.ERole;
 import com.clone.magabox.entity.Movie;
 import com.clone.magabox.entity.StartTime;
+import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.repository.MovieRepository;
 import com.clone.magabox.repository.StartTimeRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +22,16 @@ public class StartTimeService {
     private final StartTimeRepository startTimeRepository;
 
     @Transactional
-    public ResponseDto<?> addStartTime(Long movieId, StartTimeRequestDto startTimeRequestDto) {
+    public ResponseDto<?> addStartTime(Long movieId, StartTimeRequestDto startTimeRequestDto,
+                                       MemberDetailsImpl memberDetails) throws IllegalAccessException {
         Movie movie = movieRepository.findById(movieId).orElseThrow(
                 () -> new NullPointerException("해당 영화가 없습니다")
         );
+
+        if (memberDetails.getMember().getErole() != ERole.ROLE_ADMIN) {
+            throw new IllegalAccessException("현재 관리자가 아닙니다");
+        }
+
         StartTime startTime = new StartTime().builder()
                 .movie(movie)
                 .localTime(LocalTime.of(startTimeRequestDto.getHour(), startTimeRequestDto.getMinute()))
@@ -34,7 +42,10 @@ public class StartTimeService {
     }
 
     @Transactional
-    public ResponseDto<?> deleteStartTime(Long timeId) {
+    public ResponseDto<?> deleteStartTime(Long timeId, MemberDetailsImpl memberDetails) throws IllegalAccessException {
+        if (memberDetails.getMember().getErole() != ERole.ROLE_ADMIN) {
+            throw new IllegalAccessException("현재 관리자가 아닙니다");
+        }
         StartTime startTime = startTimeRepository.findById(timeId).orElseThrow(
                 () -> new NullPointerException("해당 상영시간이 없습니다")
         );
