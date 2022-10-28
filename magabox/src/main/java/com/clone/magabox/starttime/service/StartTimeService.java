@@ -2,6 +2,7 @@ package com.clone.magabox.starttime.service;
 
 import com.clone.magabox.dto.request.StartTimeRequestDto;
 import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.dto.response.StartTimeResponseDto;
 import com.clone.magabox.entity.ERole;
 import com.clone.magabox.entity.Movie;
 import com.clone.magabox.entity.StartTime;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -34,7 +37,7 @@ public class StartTimeService {
 
         StartTime startTime = new StartTime().builder()
                 .movie(movie)
-                .localTime(LocalTime.of(startTimeRequestDto.getHour(), startTimeRequestDto.getMinute()))
+                .startingTime(LocalTime.of(startTimeRequestDto.getHour(), startTimeRequestDto.getMinute()))
                 .build();
         startTimeRepository.save(startTime);
 
@@ -52,5 +55,20 @@ public class StartTimeService {
         startTimeRepository.delete(startTime);
 
         return ResponseDto.success("상영시간 삭제 성공");
+    }
+
+    public ResponseDto<?> getMovieStartTime(Long movieId) {
+        Movie movie = movieRepository.findById(movieId).orElseThrow(
+                () -> new NullPointerException("해당 영화가 없습니다")
+        );
+
+        List<StartTime> startTimeList = startTimeRepository.findByMovie(movie);
+
+        List<StartTimeResponseDto> startTimeListDto = new ArrayList<>();
+
+        for (StartTime startTime : startTimeList) {
+            startTimeListDto.add(new StartTimeResponseDto(startTime));
+        }
+        return ResponseDto.success(startTimeListDto);
     }
 }
