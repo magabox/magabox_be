@@ -2,6 +2,7 @@ package com.clone.magabox.movie.service;
 
 import com.clone.magabox.dto.request.MovieRequestDto;
 import com.clone.magabox.dto.response.MovieResponseDto;
+import com.clone.magabox.dto.response.MovieSelectOneResponseDto;
 import com.clone.magabox.dto.response.ResponseDto;
 import com.clone.magabox.entity.Movie;
 import com.clone.magabox.member.service.MemberDetailsImpl;
@@ -31,7 +32,7 @@ public class MovieService {
             return ResponseDto.fail(400, "Bad Reqest", "찾는 영화가 없어요.");
         }
 
-        MovieResponseDto movieDto = new MovieResponseDto(movie);
+        MovieSelectOneResponseDto movieDto = new MovieSelectOneResponseDto(movie);
 
         return ResponseDto.success(movieDto);
     }
@@ -57,6 +58,7 @@ public class MovieService {
                     .desc(movieRequestDto.getDesc())
                     .imageUrl(null)
                     .member(memberDetails.getMember())
+                    .runtime(movieRequestDto.getRuntime())
                     .build();
             movieRepository.save(movie);
         } else {
@@ -65,6 +67,7 @@ public class MovieService {
                     .desc(movieRequestDto.getDesc())
                     .imageUrl(s3Uploader.upload(movieRequestDto.getFile(), "movies"))
                     .member(memberDetails.getMember())
+                    .runtime(movieRequestDto.getRuntime())
                     .build();
             movieRepository.save(movie);
         }
@@ -88,6 +91,7 @@ public class MovieService {
                     .desc(movieRequestDto.getDesc())
                     .imageUrl(null)
                     .member(memberDetails.getMember())
+                    .runtime(movieRequestDto.getRuntime())
                     .build();
             movieRepository.save(movie);
         } else {
@@ -97,6 +101,7 @@ public class MovieService {
                     .desc(movieRequestDto.getDesc())
                     .imageUrl(s3Uploader.upload(movieRequestDto.getFile(), "movies"))
                     .member(memberDetails.getMember())
+                    .runtime(movieRequestDto.getRuntime())
                     .build();
             movieRepository.save(movie);
         }

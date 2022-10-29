@@ -14,9 +14,8 @@ public class StartTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO Cascade type?
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MOVIE_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
     @Column(nullable = false)

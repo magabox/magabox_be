@@ -4,25 +4,27 @@ import com.clone.magabox.entity.Movie;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
-public class MovieResponseDto {
+public class MovieSelectOneResponseDto {
 
     private Long id;
     private String title;
     private String desc;
     private String imageUrl;
     private int runtime;
-    private int totalHeartCount;
 
-    public MovieResponseDto(Movie movie) {
+    private List<CommentResponseDto> commentList;
+
+    public MovieSelectOneResponseDto(Movie movie) {
         this.id = movie.getId();
         this.title = movie.getTitle();
         this.desc = movie.getDesc();
         this.imageUrl = movie.getImageUrl();
         this.runtime = movie.getRuntime();
-        this.totalHeartCount = movie.getTotalHeartCount();
+        this.commentList = movie.getCommentList().stream().map(CommentResponseDto::new).collect(Collectors.toList());
     }
 }

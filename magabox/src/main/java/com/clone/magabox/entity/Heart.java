@@ -1,33 +1,32 @@
 package com.clone.magabox.entity;
 
+import com.clone.magabox.entity.Member;
+import com.clone.magabox.entity.Movie;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Entity
 @Getter
-@Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment {
+public class Heart {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_id", nullable = false)
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id", nullable = false)
+    @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(nullable = false)
-    private int rating;
-
-    @Column(nullable = false)
-    private String comment;
+    public Heart(Movie movie, Member member) {
+        this.movie = movie;
+        this.member = member;
+    }
 }

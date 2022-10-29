@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -40,4 +41,10 @@ public class Movie {
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
     private List<Comment> commentList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
+    private List<Heart> heartList = new ArrayList<>();
+
+    @Formula("(select count(1) from heart h where h.movie_id = id)")
+    private int totalHeartCount;
 }
