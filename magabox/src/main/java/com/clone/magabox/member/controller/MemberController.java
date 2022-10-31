@@ -1,6 +1,7 @@
 package com.clone.magabox.member.controller;
 
 
+import com.clone.magabox.dto.request.ValidatorIdDto;
 import com.clone.magabox.dto.request.MemberRequestDto;
 import com.clone.magabox.dto.request.TokenRequestDto;
 import com.clone.magabox.dto.response.ResponseDto;
@@ -37,9 +38,9 @@ public class MemberController {
     /*
      * 중복확인
      */
-    @GetMapping("/{memberId}")
-    public ResponseDto<?> userInfo(@PathVariable("memberId") Long id){
-        return memberService.getUser(id);
+    @PostMapping("/checkDuplicate")
+    public ResponseDto<?> checkDuplicate(@RequestBody ValidatorIdDto validatorIdDto){
+        return memberService.checkDuplicate(validatorIdDto);
     }
 
     @PostMapping("/reissue")

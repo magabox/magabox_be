@@ -2,6 +2,7 @@ package com.clone.magabox.member.service;
 
 import com.clone.magabox.dto.request.MemberRequestDto;
 import com.clone.magabox.dto.request.TokenRequestDto;
+import com.clone.magabox.dto.request.ValidatorIdDto;
 import com.clone.magabox.dto.response.ResponseDto;
 import com.clone.magabox.entity.ERole;
 import com.clone.magabox.entity.Member;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import java.util.Objects;
 
 
 @Service
@@ -49,7 +51,7 @@ public class MemberService {
 
         Member member = new Member().builder()
                 .username(memberRequestDto.getUsername())
-                .name(memberRequestDto.getUsername())
+                .name(memberRequestDto.getName())
                 .password(passwordEncoder.encode(memberRequestDto.getPassword()))
                 .erole(ERole.ROLE_MEMBER)
                 .build();
@@ -94,11 +96,13 @@ public class MemberService {
     /*
      * 중복확인
      */
-    public ResponseDto<?> getUser(Long id) {
-        Member member = memberRepository.findById(id).orElseThrow(() ->
-                new UsernameNotFoundException("유저를 찾을 수 없습니다.")
-        );
-        return ResponseDto.success(member);
+    public ResponseDto<?> checkDuplicate(ValidatorIdDto validatorIdDto) {
+        Member findMember = memberRepository.findByUsername(validatorIdDto.getUsername()).orElse(null);
+        if(Objects.isNull(findMember)) {
+            return ResponseDto.success(validatorIdDto.getUsername()+"는 가입할 수 있는 아이디입니다.");
+        } else {
+            return ResponseDto.fail(400,"중복된 아이디 입니다.",findMember.getUsername()+"는 중복된 아이디 입니다.");
+        }
     }
 
     @Transactional

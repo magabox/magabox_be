@@ -34,6 +34,7 @@ public class S3Uploader {
     private String upload(File uploadFile, String dirName) {
         String fileName = dirName + "/" + uploadFile.getName();
         String uploadImageUrl = putS3(uploadFile, fileName);
+        System.out.println("이미지값 = " + uploadImageUrl);
         removeNewFile(uploadFile);
         return uploadImageUrl;
     }

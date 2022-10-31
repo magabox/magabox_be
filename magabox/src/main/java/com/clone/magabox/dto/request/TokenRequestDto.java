@@ -1,7 +1,8 @@
 package com.clone.magabox.dto.request;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Getter;
+
 
 @Getter
 @NoArgsConstructor

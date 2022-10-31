@@ -1,20 +1,21 @@
 package com.clone.magabox.movie.service;
 
-import com.clone.magabox.dto.request.MovieRequestDto;
-import com.clone.magabox.dto.response.MovieResponseDto;
-import com.clone.magabox.dto.response.ResponseDto;
-import com.clone.magabox.entity.Movie;
-import com.clone.magabox.member.service.MemberDetailsImpl;
+import com.clone.magabox.dto.response.MovieSelectOneResponseDto;
+import org.springframework.transaction.annotation.Transactional;
 import com.clone.magabox.movie.repository.MovieRepository;
+import com.clone.magabox.member.service.MemberDetailsImpl;
+import com.clone.magabox.dto.response.MovieResponseDto;
+import com.clone.magabox.dto.request.MovieRequestDto;
+import com.clone.magabox.dto.response.ResponseDto;
+import org.springframework.stereotype.Service;
 import com.clone.magabox.util.S3Uploader;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.clone.magabox.entity.Movie;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,46 +29,53 @@ public class MovieService {
         Movie movie = movieRepository.findById(movieId).orElse(null);
 
         if(Objects.isNull(movie)) {
-            return ResponseDto.fail(400, "Bad Reqest", "찾는 영화가 없어요.");
+            return ResponseDto.fail(400, "Bad Request", "찾는 영화가 없어요.");
         }
 
-        MovieResponseDto movieDto = new MovieResponseDto(movie);
+        MovieSelectOneResponseDto movieDto = new MovieSelectOneResponseDto(movie);
 
         return ResponseDto.success(movieDto);
     }
 
-    public ResponseDto<?> getAllMovies(){
+    public ResponseDto<?> getMoviesRank() {
+        List<Movie> movies = movieRepository.findTop4ByOrderByTotalHeartCountDesc();
 
-        List<Movie> products = movieRepository.findAll();
-
-        List<MovieResponseDto> productResponseDtoList = new ArrayList<>();
-
-        for (Movie product : products) {
-            productResponseDtoList.add(new MovieResponseDto(product));
+        List<MovieResponseDto> moviesList = new ArrayList<>();
+        for (Movie movie : movies) {
+            moviesList.add(new MovieResponseDto(movie));
         }
 
-        return ResponseDto.success(productResponseDtoList);
+        return ResponseDto.success(moviesList);
     }
 
-    public ResponseDto<?> createMovie(MovieRequestDto movieRequestDto, MemberDetailsImpl memberDetails) throws IOException {
+    public ResponseDto<?> getAllMovies(){
 
-        if(movieRequestDto.getFile().isEmpty()) {
-            Movie movie = Movie.builder()
-                    .title(movieRequestDto.getTitle())
-                    .desc(movieRequestDto.getDesc())
-                    .imageUrl(null)
-                    .member(memberDetails.getMember())
-                    .build();
-            movieRepository.save(movie);
-        } else {
-            Movie movie = Movie.builder()
-                    .title(movieRequestDto.getTitle())
-                    .desc(movieRequestDto.getDesc())
-                    .imageUrl(s3Uploader.upload(movieRequestDto.getFile(), "movies"))
-                    .member(memberDetails.getMember())
-                    .build();
-            movieRepository.save(movie);
+        List<Movie> Movies = movieRepository.findAll();
+
+        List<MovieResponseDto> movieResponseDtoList = new ArrayList<>();
+
+        for (Movie movie : Movies) {
+            movieResponseDtoList.add(new MovieResponseDto(movie));
         }
+
+        return ResponseDto.success(movieResponseDtoList);
+    }
+
+    @Transactional
+        public ResponseDto<?> createMovie(MovieRequestDto movieRequestDto, MemberDetailsImpl memberDetails) throws IOException {
+        Movie findTitle = movieRepository.findByTitle(movieRequestDto.getTitle()).orElse(null);
+        if(Objects.nonNull(findTitle)){
+            return ResponseDto.fail(400,"You cannot write with the same title.","동일한 제목으로 작성 불가능");
+        }
+
+        Movie movie = Movie.builder()
+                .title(movieRequestDto.getTitle())
+                .summary(movieRequestDto.getSummary())
+                .imageUrl(movieRequestDto.getFile().isEmpty() ? null : s3Uploader.upload(movieRequestDto.getFile(), "movies"))
+                .member(memberDetails.getMember())
+                .runtime(movieRequestDto.getRuntime())
+                .build();
+        movieRepository.save(movie);
 
         return ResponseDto.success("성공적으로 등록하셨습니다");
     }
@@ -78,28 +86,25 @@ public class MovieService {
         Movie findMovie = movieRepository.findById(id).orElse(null);
 
         if(Objects.isNull(findMovie)) {
-            ResponseDto.fail(400, "Bad Reqest", "찾는 영화가 없어요.");
+            ResponseDto.fail(400, "Bad Request", "찾는 영화가 없어요.");
         }
 
-        if(movieRequestDto.getFile().isEmpty()) {
-            Movie movie = Movie.builder()
-                    .id(findMovie.getId())
-                    .title(movieRequestDto.getTitle())
-                    .desc(movieRequestDto.getDesc())
-                    .imageUrl(null)
-                    .member(memberDetails.getMember())
-                    .build();
-            movieRepository.save(movie);
-        } else {
-            Movie movie = Movie.builder()
-                    .id(findMovie.getId())
-                    .title(movieRequestDto.getTitle())
-                    .desc(movieRequestDto.getDesc())
-                    .imageUrl(s3Uploader.upload(movieRequestDto.getFile(), "movies"))
-                    .member(memberDetails.getMember())
-                    .build();
-            movieRepository.save(movie);
+        Movie findTitle = movieRepository.findByTitle(movieRequestDto.getTitle()).orElse(null);
+        if(Objects.nonNull(findTitle)){
+            return ResponseDto.fail(400,"It cannot be edited with the same title.","동일한 제목으로 수정 불가능");
         }
+
+        Movie movie = Movie.builder()
+                .id(id)
+                .title(movieRequestDto.getTitle())
+                .summary(movieRequestDto.getSummary())
+                .imageUrl(movieRequestDto.getFile().isEmpty()? null:s3Uploader.upload(movieRequestDto.getFile(), "movies"))
+                .member(memberDetails.getMember())
+                .runtime(movieRequestDto.getRuntime())
+                .build();
+
+        movieRepository.save(movie);
+
         return ResponseDto.success("업데이트 성공");
     }
 
@@ -121,5 +126,18 @@ public class MovieService {
         } else {
             return ResponseDto.fail(401,"You do not have permission","권한이 없어요.");
         }
+    }
+
+    public ResponseDto<?> searchMovies(String word) {
+
+        List<Movie> movies = movieRepository.findByWord(word);
+
+        List<MovieResponseDto> movieResponseDtoList = new ArrayList<>();
+
+        for (Movie movie : movies) {
+            movieResponseDtoList.add(new MovieResponseDto(movie));
+        }
+
+        return ResponseDto.success(movieResponseDtoList);
     }
 }

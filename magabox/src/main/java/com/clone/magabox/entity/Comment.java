@@ -1,30 +1,33 @@
 package com.clone.magabox.entity;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO Cascade type?
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MOVIE_ID", nullable = false)
+    @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "MEMBER_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     @Column(nullable = false)
     private int rating;
 
     @Column(nullable = false)
-    private String comment;
+    private String content;
 }
