@@ -51,7 +51,7 @@ public class MemberService {
 
         Member member = new Member().builder()
                 .username(memberRequestDto.getUsername())
-                .name(memberRequestDto.getUsername())
+                .name(memberRequestDto.getName())
                 .password(passwordEncoder.encode(memberRequestDto.getPassword()))
                 .erole(ERole.ROLE_MEMBER)
                 .build();

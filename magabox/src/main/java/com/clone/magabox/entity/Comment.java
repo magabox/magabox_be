@@ -1,10 +1,10 @@
 package com.clone.magabox.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
 
 @Entity
 @Getter
@@ -29,5 +29,5 @@ public class Comment {
     private int rating;
 
     @Column(nullable = false)
-    private String comment;
+    private String content;
 }

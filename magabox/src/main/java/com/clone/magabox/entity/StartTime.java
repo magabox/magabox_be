@@ -1,10 +1,9 @@
 package com.clone.magabox.entity;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.LocalTime;
+import lombok.Getter;
 
 @Entity
 @Getter
