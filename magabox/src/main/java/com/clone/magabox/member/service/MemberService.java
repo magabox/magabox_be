@@ -89,6 +89,7 @@ public class MemberService {
 
         response.setHeader(JwtFilter.AUTHORIZATION_HEADER, JwtFilter.BEARER_PREFIX + tokenDto.getAccessToken());
         response.setHeader("Refresh-Token", tokenDto.getRefreshToken());
+        response.setHeader("User-Role", member.getErole().name());
 
         return ResponseDto.success("로그인 성공!");
     }
