@@ -38,7 +38,7 @@ public class Movie {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
     private List<StartTime> startTimeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> commentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)

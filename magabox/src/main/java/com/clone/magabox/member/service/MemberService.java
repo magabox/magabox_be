@@ -1,9 +1,9 @@
 package com.clone.magabox.member.service;
 
-import com.clone.magabox.dto.request.MemberRequestDto;
-import com.clone.magabox.dto.request.TokenRequestDto;
-import com.clone.magabox.dto.request.ValidatorIdDto;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.config.dto.request.MemberRequestDto;
+import com.clone.magabox.config.dto.request.TokenRequestDto;
+import com.clone.magabox.config.dto.request.ValidatorIdDto;
+import com.clone.magabox.config.dto.response.ResponseDto;
 import com.clone.magabox.entity.ERole;
 import com.clone.magabox.entity.Member;
 import com.clone.magabox.entity.RefreshToken;
@@ -64,7 +64,6 @@ public class MemberService {
     /*
      * 로그인
      */
-
     @Transactional
     public ResponseDto<?> login(MemberRequestDto memberRequestDto, HttpServletResponse response) {
 

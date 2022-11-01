@@ -1,12 +1,13 @@
 package com.clone.magabox.movie.service;
 
-import com.clone.magabox.dto.response.MovieSelectOneResponseDto;
+import com.clone.magabox.comment.repository.CommentRepository;
+import com.clone.magabox.config.dto.response.MovieSelectOneResponseDto;
 import org.springframework.transaction.annotation.Transactional;
 import com.clone.magabox.movie.repository.MovieRepository;
 import com.clone.magabox.member.service.MemberDetailsImpl;
-import com.clone.magabox.dto.response.MovieResponseDto;
-import com.clone.magabox.dto.request.MovieRequestDto;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.config.dto.response.MovieResponseDto;
+import com.clone.magabox.config.dto.request.MovieRequestDto;
+import com.clone.magabox.config.dto.response.ResponseDto;
 import org.springframework.stereotype.Service;
 import com.clone.magabox.util.S3Uploader;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ import java.util.List;
 public class MovieService {
 
     private final MovieRepository movieRepository;
+    private final CommentRepository commentRepository;
     private final S3Uploader s3Uploader;
 
     @Transactional
@@ -118,6 +120,8 @@ public class MovieService {
         }
 
         if(memberDetails.getMember().getUsername().equals(findMovie.getMember().getUsername())) {
+
+            commentRepository.deleteByMovie(findMovie);
 
             movieRepository.delete(findMovie);
 

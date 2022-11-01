@@ -2,7 +2,7 @@ package com.clone.magabox.Heart.service;
 
 import com.clone.magabox.Heart.heartRepository.HeartRepository;
 import com.clone.magabox.movie.repository.MovieRepository;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.config.dto.response.ResponseDto;
 import com.clone.magabox.entity.Member;
 import com.clone.magabox.entity.Heart;
 import com.clone.magabox.entity.Movie;
