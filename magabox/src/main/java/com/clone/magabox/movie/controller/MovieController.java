@@ -2,9 +2,9 @@ package com.clone.magabox.movie.controller;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import com.clone.magabox.member.service.MemberDetailsImpl;
-import com.clone.magabox.dto.request.MovieRequestDto;
+import com.clone.magabox.config.dto.request.MovieRequestDto;
 import com.clone.magabox.movie.service.MovieService;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.config.dto.response.ResponseDto;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 import java.io.IOException;
