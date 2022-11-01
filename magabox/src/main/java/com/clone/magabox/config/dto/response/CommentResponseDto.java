@@ -1,21 +1,23 @@
-package com.clone.magabox.dto.response;
+package com.clone.magabox.config.dto.response;
 
 import com.clone.magabox.entity.Comment;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommentResponseDto {
     private Long id;
+    private String username;
     private int rating;
-    private String comment;
+    private String content;
 
     public CommentResponseDto(Comment comment) {
         this.id = comment.getId();
-        this.comment = comment.getComment();
+        this.username = comment.getMember().getUsername();
+        this.content = comment.getContent();
         this.rating = comment.getRating();
     }
 }

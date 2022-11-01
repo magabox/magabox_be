@@ -1,33 +1,57 @@
 package com.clone.magabox.movie.controller;
 
-
-import com.clone.magabox.dto.request.MovieRequestDto;
-import com.clone.magabox.dto.response.ResponseDto;
-import com.clone.magabox.member.service.MemberDetailsImpl;
-import com.clone.magabox.movie.service.MovieService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import com.clone.magabox.member.service.MemberDetailsImpl;
+import com.clone.magabox.config.dto.request.MovieRequestDto;
+import com.clone.magabox.movie.service.MovieService;
+import com.clone.magabox.config.dto.response.ResponseDto;
 import org.springframework.web.bind.annotation.*;
-
+import lombok.RequiredArgsConstructor;
 import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/movies")
 public class MovieController {
 
     private final MovieService movieService;
 
-    @GetMapping("/movies")
+    /**
+     * 검색
+     */
+    @GetMapping("/search")
+    public ResponseDto<?> searchMovies(@RequestParam("word") String word) {
+        return movieService.searchMovies(word);
+    }
+
+    /**
+     * 전체에서 4개출력
+     */
+    @GetMapping("/index")
+    public ResponseDto<?> getMoviesRank() {
+        return movieService.getMoviesRank();
+    }
+
+    /**
+     * 전체조회
+     */
+    @GetMapping
     public ResponseDto<?> getMovies() {
         return movieService.getAllMovies();
     }
 
-    @GetMapping("/movies/{movieId}")
+    /**
+     * 단일조회
+     */
+    @GetMapping("/{movieId}")
     public ResponseDto<?> theMovies(@PathVariable Long movieId){
         return movieService.getMovie(movieId);
     }
 
-    @PostMapping("/movies")
+    /**
+     * 영화게시
+     */
+    @PostMapping
     public ResponseDto<?> Posting(
             @ModelAttribute MovieRequestDto movieRequestDto,
             @AuthenticationPrincipal MemberDetailsImpl memberDetails
@@ -35,12 +59,18 @@ public class MovieController {
         return movieService.createMovie(movieRequestDto, memberDetails);
     }
 
-    @DeleteMapping("/movies/{movieId}")
+    /**
+     * 영화삭제
+     */
+    @DeleteMapping("/{movieId}")
     public ResponseDto<?> deleteProduct(@PathVariable Long movieId, @AuthenticationPrincipal MemberDetailsImpl memberDetails) {
         return movieService.deleteMovie(movieId, memberDetails);
     }
 
-    @PutMapping(value = "/movies/{movieId}")
+    /**
+     * 영화수정
+     */
+    @PutMapping( "/{movieId}")
     public ResponseDto<?> updateMovies(
             @PathVariable Long movieId,
             @ModelAttribute MovieRequestDto movieRequestDto,

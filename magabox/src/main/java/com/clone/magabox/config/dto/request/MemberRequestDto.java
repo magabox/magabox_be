@@ -1,9 +1,9 @@
-package com.clone.magabox.dto.request;
+package com.clone.magabox.config.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 @Getter
 @NoArgsConstructor

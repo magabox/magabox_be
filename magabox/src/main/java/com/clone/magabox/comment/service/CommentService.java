@@ -1,18 +1,18 @@
 package com.clone.magabox.comment.service;
 
-import com.clone.magabox.dto.request.CommentRequestDto;
 import com.clone.magabox.comment.repository.CommentRepository;
-import com.clone.magabox.dto.response.ResponseDto;
-import com.clone.magabox.entity.Comment;
-import com.clone.magabox.entity.Member;
-import com.clone.magabox.entity.Movie;
 import com.clone.magabox.member.repository.MemberRepository;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.movie.repository.MovieRepository;
+import com.clone.magabox.config.dto.request.CommentRequestDto;
+import com.clone.magabox.config.dto.response.ResponseDto;
+import com.clone.magabox.entity.Comment;
+import com.clone.magabox.entity.Member;
+import com.clone.magabox.entity.Movie;
+
+import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpStatus;
-import org.springframework.stereotype.Service;
-
 import java.util.Objects;
 
 @Service
@@ -39,7 +39,7 @@ public class CommentService {
             return ResponseDto.fail(400,"잘못된 요청 입니다.","해당 게시물이 없어요");
         } else {
             Comment comment = Comment.builder()
-                    .comment(commentRequestDto.getComment())
+                    .content(commentRequestDto.getContent())
                     .rating(commentRequestDto.getRating())
                     .movie(movie)
                     .member(member)
@@ -69,7 +69,7 @@ public class CommentService {
                 .movie(findComment.getMovie())
                 .member(findComment.getMember())
                 .rating(commentRequestDto.getRating())
-                .comment(commentRequestDto.getComment())
+                .content(commentRequestDto.getContent())
                 .build();
 
         commentRepository.save(comment);

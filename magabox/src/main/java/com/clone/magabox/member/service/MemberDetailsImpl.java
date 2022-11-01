@@ -20,8 +20,6 @@ public class MemberDetailsImpl implements UserDetails {
         this.member = member;
     }
 
-
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 

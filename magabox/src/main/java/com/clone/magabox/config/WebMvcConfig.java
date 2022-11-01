@@ -1,8 +1,9 @@
 package com.clone.magabox.config;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.context.annotation.Configuration;
+
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -11,7 +12,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000")
                 .allowedMethods("GET","POST","PUT","DELETE")
-                .exposedHeaders("Authorization","Refresh-Token")
+                .exposedHeaders("Authorization","Refresh-Token","User-Role")
                 .allowCredentials(true)//make client read header("jwt-token")
         ;
     }
