@@ -1,4 +1,4 @@
-package com.clone.magabox.repository;
+package com.clone.magabox.comment.repository;
 
 import com.clone.magabox.entity.Comment;
 import com.clone.magabox.entity.Member;

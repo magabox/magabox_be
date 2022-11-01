@@ -1,6 +1,5 @@
 package com.clone.magabox.entity;
 
-import com.clone.magabox.dto.request.StartTimeRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +18,6 @@ public class StartTime {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // TODO: Cascade type?
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MOVIE_ID", nullable = false)
     private Movie movie;

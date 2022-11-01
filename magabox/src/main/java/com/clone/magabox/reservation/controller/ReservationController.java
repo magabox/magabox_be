@@ -14,14 +14,25 @@ import org.springframework.web.bind.annotation.*;
 public class ReservationController {
     private final ReservationService reservationService;
 
-    @PostMapping("/reservations/{timeId}")
-    public ResponseDto<?> createReservation(@PathVariable Long timeId, @RequestBody ReservationRequestDto reservationRequestDto,
+    @PostMapping("/reservations")
+    public ResponseDto<?> createReservation( @RequestBody ReservationRequestDto reservationRequestDto,
                                             @AuthenticationPrincipal MemberDetailsImpl memberDetails) {
-        return reservationService.createReservation(timeId, reservationRequestDto, memberDetails);
+        return reservationService.createReservation(reservationRequestDto, memberDetails);
     }
 
     @GetMapping("/reservations")
     public ResponseDto<?> getMemberReservation(@AuthenticationPrincipal MemberDetailsImpl memberDetails) {
         return reservationService.getMemberReservation(memberDetails);
     }
+
+    @GetMapping("/reservations/{reservationId}")
+    public ResponseDto<?> getReservation(@PathVariable Long reservationId, @AuthenticationPrincipal MemberDetailsImpl memberDetails) {
+        return reservationService.getReservation(reservationId, memberDetails);
+    }
+
+    @DeleteMapping("/reservations/{reservationId}")
+    public ResponseDto<?> deleteReservation(@PathVariable Long reservationId, @AuthenticationPrincipal MemberDetailsImpl memberDetails) {
+        return reservationService.deleteReservation(reservationId, memberDetails);
+    }
+
 }

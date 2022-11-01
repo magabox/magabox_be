@@ -71,7 +71,6 @@ public class SecurityConfig{
                 .and()
                 .authorizeRequests()
                 .antMatchers("/members/**").permitAll()
-                //.antMatchers("/movies/**").hasRole("ROLE_ADMIN")
                 .antMatchers(HttpMethod.POST).authenticated()
                 .antMatchers(HttpMethod.DELETE).authenticated()
                 .antMatchers(HttpMethod.PUT).authenticated()

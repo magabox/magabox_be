@@ -17,13 +17,13 @@ public class StartTimeController {
 
     @PostMapping("/{movieId}")
     public ResponseDto<?> addStartTime(@PathVariable Long movieId, @RequestBody StartTimeRequestDto startTimeRequestDto,
-                                       @AuthenticationPrincipal MemberDetailsImpl memberDetails) throws IllegalAccessException {
+                                       @AuthenticationPrincipal MemberDetailsImpl memberDetails) {
         return startTimeService.addStartTime(movieId, startTimeRequestDto, memberDetails);
     }
 
     @DeleteMapping("/times/{timeId}")
     public ResponseDto<?> deleteStartTime(@PathVariable Long timeId,
-                                          @AuthenticationPrincipal MemberDetailsImpl memberDetails) throws IllegalAccessException {
+                                          @AuthenticationPrincipal MemberDetailsImpl memberDetails) {
         return startTimeService.deleteStartTime(timeId, memberDetails);
     }
 

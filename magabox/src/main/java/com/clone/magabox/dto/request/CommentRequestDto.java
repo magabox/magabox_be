@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
-public class ReservationRequestDto {
-    private Long timeId;
-    private int numTickets;
+@AllArgsConstructor
+public class CommentRequestDto {
+    private int rating;
+    private String comment;
 }
