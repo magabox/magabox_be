@@ -1,32 +1,32 @@
-ackage com.clone.magabox.entity;
+package com.clone.magabox.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.time.LocalTime;
+
 
 @Entity
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StartTime {
+public class Reservation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // TODO Cascade type?
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MOVIE_ID", nullable = false)
-    private Movie movie;
+    @JoinColumn(name = "MEMBER_ID", nullable = false)
+    private Member member;
 
-    @Column(nullable = false)
-    private LocalTime startingTime;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "STARTTIME_ID", nullable = false)
+    private StartTime startTime;
 
-    private int capacity;
-
-    public void addViewers(int num) {
-        this.capacity -= num;
-    }
+    private int numTickets;
 }
