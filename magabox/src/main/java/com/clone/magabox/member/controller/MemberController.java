@@ -1,13 +1,13 @@
 package com.clone.magabox.member.controller;
 
-import com.clone.magabox.config.dto.request.MemberRequestDto;
-import com.clone.magabox.config.dto.request.TokenRequestDto;
+import com.clone.magabox.member.dto.request.MemberRequestDto;
+import com.clone.magabox.jwt.dto.request.TokenRequestDto;
 import com.clone.magabox.member.service.MemberService;
-import com.clone.magabox.config.dto.request.ValidatorIdDto;
-import com.clone.magabox.config.dto.response.ResponseDto;
+import com.clone.magabox.member.dto.request.ValidatorIdDto;
+import com.clone.magabox.dto.response.ResponseDto;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
-import com.clone.magabox.entity.TokenDto;
+import com.clone.magabox.jwt.dto.response.TokenDto;
 import lombok.RequiredArgsConstructor;
 
 

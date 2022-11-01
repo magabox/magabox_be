@@ -1,6 +1,6 @@
-package com.clone.magabox.config.dto.response;
+package com.clone.magabox.member.dto.response;
 
-import com.clone.magabox.entity.Member;
+import com.clone.magabox.member.entity.Member;
 import lombok.Getter;
 
 @Getter

@@ -1,7 +1,7 @@
 package com.clone.magabox.jwt.security;
 
-import com.clone.magabox.entity.Member;
-import com.clone.magabox.entity.TokenDto;
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.jwt.dto.response.TokenDto;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.member.repository.MemberRepository;
 import io.jsonwebtoken.*;

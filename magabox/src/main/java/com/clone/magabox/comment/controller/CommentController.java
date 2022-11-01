@@ -3,8 +3,8 @@ package com.clone.magabox.comment.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.comment.service.CommentService;
-import com.clone.magabox.config.dto.request.CommentRequestDto;
-import com.clone.magabox.config.dto.response.ResponseDto;
+import com.clone.magabox.comment.dto.request.CommentRequestDto;
+import com.clone.magabox.dto.response.ResponseDto;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 

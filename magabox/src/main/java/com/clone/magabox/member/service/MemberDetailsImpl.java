@@ -3,8 +3,8 @@ package com.clone.magabox.member.service;
 
 
 
-import com.clone.magabox.entity.ERole;
-import com.clone.magabox.entity.Member;
+import com.clone.magabox.member.entity.ERole;
+import com.clone.magabox.member.entity.Member;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

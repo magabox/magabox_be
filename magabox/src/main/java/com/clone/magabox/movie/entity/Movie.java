@@ -1,14 +1,17 @@
-package com.clone.magabox.entity;
+package com.clone.magabox.movie.entity;
 
+import com.clone.magabox.comment.entity.Comment;
+import com.clone.magabox.Heart.entity.Heart;
+import com.clone.magabox.entity.StartTime;
+import com.clone.magabox.member.entity.Member;
 import org.hibernate.annotations.Formula;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Builder;
+import lombok.Getter;
 
 @Entity
 @Getter
@@ -38,7 +41,7 @@ public class Movie {
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)
     private List<StartTime> startTimeList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
     private List<Comment> commentList = new ArrayList<>();
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.REMOVE)

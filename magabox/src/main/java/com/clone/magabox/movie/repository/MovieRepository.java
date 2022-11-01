@@ -3,7 +3,7 @@ package com.clone.magabox.movie.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.jpa.repository.Query;
-import com.clone.magabox.entity.Movie;
+import com.clone.magabox.movie.entity.Movie;
 
 import java.util.Optional;
 import java.util.List;

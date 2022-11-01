@@ -1,13 +1,13 @@
 package com.clone.magabox.member.service;
 
-import com.clone.magabox.config.dto.request.MemberRequestDto;
-import com.clone.magabox.config.dto.request.TokenRequestDto;
-import com.clone.magabox.config.dto.request.ValidatorIdDto;
-import com.clone.magabox.config.dto.response.ResponseDto;
-import com.clone.magabox.entity.ERole;
-import com.clone.magabox.entity.Member;
-import com.clone.magabox.entity.RefreshToken;
-import com.clone.magabox.entity.TokenDto;
+import com.clone.magabox.member.dto.request.MemberRequestDto;
+import com.clone.magabox.jwt.dto.request.TokenRequestDto;
+import com.clone.magabox.member.dto.request.ValidatorIdDto;
+import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.member.entity.ERole;
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.jwt.entity.RefreshToken;
+import com.clone.magabox.jwt.dto.response.TokenDto;
 import com.clone.magabox.jwt.repository.RefreshTokenRepository;
 import com.clone.magabox.jwt.security.JwtFilter;
 import com.clone.magabox.jwt.security.TokenProvider;
@@ -89,6 +89,7 @@ public class MemberService {
         response.setHeader(JwtFilter.AUTHORIZATION_HEADER, JwtFilter.BEARER_PREFIX + tokenDto.getAccessToken());
         response.setHeader("Refresh-Token", tokenDto.getRefreshToken());
         response.setHeader("User-Role", member.getErole().name());
+        response.setHeader("username", member.getUsername());
 
         return ResponseDto.success("로그인 성공!");
     }

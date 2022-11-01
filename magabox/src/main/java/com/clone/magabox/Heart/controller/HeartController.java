@@ -1,7 +1,7 @@
 package com.clone.magabox.Heart.controller;
 
 import com.clone.magabox.Heart.service.HeartService;
-import com.clone.magabox.config.dto.response.ResponseDto;
+import com.clone.magabox.dto.response.ResponseDto;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

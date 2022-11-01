@@ -1,4 +1,4 @@
-package com.clone.magabox.entity;
+ackage com.clone.magabox.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
