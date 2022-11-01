@@ -1,5 +1,12 @@
 package com.clone.magabox.movie.service;
 
+import com.clone.magabox.dto.request.MovieRequestDto;
+import com.clone.magabox.dto.response.MovieResponseDto;
+import com.clone.magabox.dto.response.MovieSelectOneResponseDto;
+import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.entity.ERole;
+import com.clone.magabox.entity.Movie;
+import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.comment.repository.CommentRepository;
 import com.clone.magabox.config.dto.response.MovieSelectOneResponseDto;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,7 +74,7 @@ public class MovieService {
         public ResponseDto<?> createMovie(MovieRequestDto movieRequestDto, MemberDetailsImpl memberDetails) throws IOException {
         Movie findTitle = movieRepository.findByTitle(movieRequestDto.getTitle()).orElse(null);
         if(Objects.nonNull(findTitle)){
-            return ResponseDto.fail(400,"You cannot write with the same title.","동일한 제목으로 작성 불가능");
+            return ResponseDto.fail(400, "Bad Request","동일한 제목으로 작성 불가능");
         }
 
         Movie movie = Movie.builder()

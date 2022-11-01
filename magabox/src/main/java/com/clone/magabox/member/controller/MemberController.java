@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/members")
 public class MemberController {
 
+    // TODO: update fail status
+
     private final MemberService memberService;
 
     /*
