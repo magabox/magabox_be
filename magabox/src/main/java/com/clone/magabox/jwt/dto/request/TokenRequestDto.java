@@ -1,4 +1,4 @@
-package com.clone.magabox.config.dto.request;
+package com.clone.magabox.jwt.dto.request;
 
 import lombok.NoArgsConstructor;
 import lombok.Getter;

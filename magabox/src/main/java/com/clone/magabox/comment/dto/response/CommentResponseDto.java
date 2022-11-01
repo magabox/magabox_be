@@ -1,6 +1,6 @@
-package com.clone.magabox.config.dto.response;
+package com.clone.magabox.comment.dto.response;
 
-import com.clone.magabox.entity.Comment;
+import com.clone.magabox.comment.entity.Comment;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Getter;

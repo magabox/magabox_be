@@ -1,4 +1,4 @@
-package com.clone.magabox.config.dto.request;
+package com.clone.magabox.member.dto.request;
 
 import lombok.Getter;
 @Getter

@@ -4,11 +4,11 @@ import com.clone.magabox.comment.repository.CommentRepository;
 import com.clone.magabox.member.repository.MemberRepository;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.movie.repository.MovieRepository;
-import com.clone.magabox.config.dto.request.CommentRequestDto;
-import com.clone.magabox.config.dto.response.ResponseDto;
-import com.clone.magabox.entity.Comment;
-import com.clone.magabox.entity.Member;
-import com.clone.magabox.entity.Movie;
+import com.clone.magabox.comment.dto.request.CommentRequestDto;
+import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.comment.entity.Comment;
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.movie.entity.Movie;
 
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;

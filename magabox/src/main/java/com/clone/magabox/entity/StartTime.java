@@ -1,5 +1,6 @@
 package com.clone.magabox.entity;
 
+import com.clone.magabox.movie.entity.Movie;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalTime;

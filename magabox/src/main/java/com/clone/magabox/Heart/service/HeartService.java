@@ -2,10 +2,10 @@ package com.clone.magabox.Heart.service;
 
 import com.clone.magabox.Heart.heartRepository.HeartRepository;
 import com.clone.magabox.movie.repository.MovieRepository;
-import com.clone.magabox.config.dto.response.ResponseDto;
-import com.clone.magabox.entity.Member;
-import com.clone.magabox.entity.Heart;
-import com.clone.magabox.entity.Movie;
+import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.Heart.entity.Heart;
+import com.clone.magabox.movie.entity.Movie;
 
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +34,6 @@ public class HeartService {
             heartRepository.delete(heart);
             return ResponseDto.success("좋아요 취소");
         }
+
     }
 }

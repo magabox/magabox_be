@@ -12,7 +12,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:3000")
                 .allowedMethods("GET","POST","PUT","DELETE")
-                .exposedHeaders("Authorization","Refresh-Token","User-Role")
+                .exposedHeaders("Authorization","Refresh-Token","User-Role","username")
                 .allowCredentials(true)//make client read header("jwt-token")
         ;
     }

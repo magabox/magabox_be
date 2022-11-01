@@ -1,5 +1,7 @@
-package com.clone.magabox.entity;
+package com.clone.magabox.comment.entity;
 
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.movie.entity.Movie;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;

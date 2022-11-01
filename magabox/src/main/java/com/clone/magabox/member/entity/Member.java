@@ -1,4 +1,4 @@
-package com.clone.magabox.entity;
+package com.clone.magabox.member.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -30,11 +30,4 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private ERole erole;
 
-
-//    public Member(MemberRequestDto requestDto, PasswordEncoder passwordEncoder) {
-//        this.name = requestDto.getName();
-//        this.username = requestDto.getUsername();
-//        this.password = passwordEncoder.encode(requestDto.getPassword());
-//     this.erole = ERole.ROLE_MEMBER;
-//    }
 }

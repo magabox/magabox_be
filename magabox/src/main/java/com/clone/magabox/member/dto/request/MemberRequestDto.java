@@ -1,4 +1,4 @@
-package com.clone.magabox.config.dto.request;
+package com.clone.magabox.member.dto.request;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import lombok.AllArgsConstructor;

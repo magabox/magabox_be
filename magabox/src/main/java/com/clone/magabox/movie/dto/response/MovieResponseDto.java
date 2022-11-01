@@ -1,8 +1,12 @@
-package com.clone.magabox.config.dto.response;
+package com.clone.magabox.movie.dto.response;
 
-import com.clone.magabox.entity.Movie;
+import com.clone.magabox.Heart.dto.response.HeartResonseDto;
+import com.clone.magabox.movie.entity.Movie;
 import lombok.NoArgsConstructor;
 import lombok.Getter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
@@ -15,6 +19,7 @@ public class MovieResponseDto {
     private int runtime;
     private int totalHeartCount;
     private Float totalRating;
+    private List<HeartResonseDto> heartList;
 
     public MovieResponseDto(Movie movie) {
         this.id = movie.getId();
@@ -24,5 +29,6 @@ public class MovieResponseDto {
         this.runtime = movie.getRuntime();
         this.totalHeartCount = movie.getTotalHeartCount();
         this.totalRating = movie.getTotalRating();
+        this.heartList = movie.getHeartList().stream().map(HeartResonseDto::new).collect(Collectors.toList());
     }
 }

@@ -1,7 +1,7 @@
-package com.clone.magabox.entity;
+package com.clone.magabox.Heart.entity;
 
-import com.clone.magabox.entity.Member;
-import com.clone.magabox.entity.Movie;
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.movie.entity.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,11 +17,11 @@ public class Heart {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "movie_id")
     private Movie movie;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "member_id")
     private Member member;
 

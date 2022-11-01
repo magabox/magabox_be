@@ -1,4 +1,4 @@
-package com.clone.magabox.entity;
+package com.clone.magabox.jwt.entity;
 
 import lombok.NoArgsConstructor;
 import javax.persistence.Column;
