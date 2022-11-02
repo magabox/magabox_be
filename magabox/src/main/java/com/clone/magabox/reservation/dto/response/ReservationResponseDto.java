@@ -1,6 +1,6 @@
-package com.clone.magabox.dto.response;
+package com.clone.magabox.reservation.dto.response;
 
-import com.clone.magabox.entity.Reservation;
+import com.clone.magabox.starttime.entity.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

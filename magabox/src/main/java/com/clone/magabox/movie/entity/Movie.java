@@ -2,8 +2,8 @@ package com.clone.magabox.movie.entity;
 
 import com.clone.magabox.comment.entity.Comment;
 import com.clone.magabox.Heart.entity.Heart;
-import com.clone.magabox.entity.StartTime;
 import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.reservation.entity.StartTime;
 import org.hibernate.annotations.Formula;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

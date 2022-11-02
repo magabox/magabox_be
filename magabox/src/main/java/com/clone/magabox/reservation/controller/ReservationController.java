@@ -1,7 +1,7 @@
 package com.clone.magabox.reservation.controller;
 
-import com.clone.magabox.dto.request.ReservationRequestDto;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.reservation.dto.request.ReservationRequestDto;
+import com.clone.magabox.util.ResponseDto;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.reservation.service.ReservationService;
 import lombok.RequiredArgsConstructor;

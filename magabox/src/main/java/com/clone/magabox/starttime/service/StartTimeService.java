@@ -1,14 +1,14 @@
 package com.clone.magabox.starttime.service;
 
-import com.clone.magabox.dto.request.StartTimeRequestDto;
-import com.clone.magabox.dto.response.ResponseDto;
-import com.clone.magabox.dto.response.StartTimeResponseDto;
-import com.clone.magabox.entity.ERole;
-import com.clone.magabox.entity.Movie;
-import com.clone.magabox.entity.StartTime;
+import com.clone.magabox.member.entity.ERole;
+import com.clone.magabox.movie.entity.Movie;
+import com.clone.magabox.reservation.entity.StartTime;
+import com.clone.magabox.starttime.dto.request.StartTimeRequestDto;
+import com.clone.magabox.starttime.dto.response.StartTimeResponseDto;
+import com.clone.magabox.util.ResponseDto;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.movie.repository.MovieRepository;
-import com.clone.magabox.repository.StartTimeRepository;
+import com.clone.magabox.starttime.repository.StartTimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

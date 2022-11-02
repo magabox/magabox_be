@@ -73,6 +73,7 @@ public class SecurityConfig{
                 .antMatchers(HttpMethod.POST,"/movies/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE,"/movies/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.PUT,"/movies/**").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,"/times/**").hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.POST).authenticated()
                 .antMatchers(HttpMethod.DELETE).authenticated()
                 .antMatchers(HttpMethod.PUT).authenticated()

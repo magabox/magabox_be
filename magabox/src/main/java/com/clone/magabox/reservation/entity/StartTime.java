@@ -1,5 +1,6 @@
-ackage com.clone.magabox.entity;
+package com.clone.magabox.reservation.entity;
 
+import com.clone.magabox.movie.entity.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
