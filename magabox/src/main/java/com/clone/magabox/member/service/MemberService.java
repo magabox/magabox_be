@@ -3,7 +3,7 @@ package com.clone.magabox.member.service;
 import com.clone.magabox.member.dto.request.MemberRequestDto;
 import com.clone.magabox.jwt.dto.request.TokenRequestDto;
 import com.clone.magabox.member.dto.request.ValidatorIdDto;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.util.ResponseDto;
 import com.clone.magabox.member.entity.ERole;
 import com.clone.magabox.member.entity.Member;
 import com.clone.magabox.jwt.entity.RefreshToken;

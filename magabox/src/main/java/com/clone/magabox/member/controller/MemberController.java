@@ -4,7 +4,7 @@ import com.clone.magabox.member.dto.request.MemberRequestDto;
 import com.clone.magabox.jwt.dto.request.TokenRequestDto;
 import com.clone.magabox.member.service.MemberService;
 import com.clone.magabox.member.dto.request.ValidatorIdDto;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.util.ResponseDto;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import com.clone.magabox.jwt.dto.response.TokenDto;

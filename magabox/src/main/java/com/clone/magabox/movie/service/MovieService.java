@@ -1,20 +1,13 @@
 package com.clone.magabox.movie.service;
 
-import com.clone.magabox.dto.request.MovieRequestDto;
-import com.clone.magabox.dto.response.MovieResponseDto;
-import com.clone.magabox.dto.response.MovieSelectOneResponseDto;
-import com.clone.magabox.dto.response.ResponseDto;
-import com.clone.magabox.entity.ERole;
-import com.clone.magabox.entity.Movie;
+import com.clone.magabox.util.ResponseDto;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.comment.repository.CommentRepository;
 import com.clone.magabox.movie.dto.response.MovieSelectOneResponseDto;
 import org.springframework.transaction.annotation.Transactional;
 import com.clone.magabox.movie.repository.MovieRepository;
-import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.movie.dto.response.MovieResponseDto;
 import com.clone.magabox.movie.dto.request.MovieRequestDto;
-import com.clone.magabox.dto.response.ResponseDto;
 import org.springframework.stereotype.Service;
 import com.clone.magabox.util.S3Uploader;
 import lombok.RequiredArgsConstructor;

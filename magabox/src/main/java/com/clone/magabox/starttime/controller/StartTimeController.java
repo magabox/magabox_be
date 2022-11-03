@@ -1,8 +1,8 @@
 package com.clone.magabox.starttime.controller;
 
 
-import com.clone.magabox.dto.request.StartTimeRequestDto;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.starttime.dto.request.StartTimeRequestDto;
+import com.clone.magabox.util.ResponseDto;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.starttime.service.StartTimeService;
 import lombok.RequiredArgsConstructor;

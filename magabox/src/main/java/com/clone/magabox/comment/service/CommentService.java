@@ -5,7 +5,7 @@ import com.clone.magabox.member.repository.MemberRepository;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.movie.repository.MovieRepository;
 import com.clone.magabox.comment.dto.request.CommentRequestDto;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.util.ResponseDto;
 import com.clone.magabox.comment.entity.Comment;
 import com.clone.magabox.member.entity.Member;
 import com.clone.magabox.movie.entity.Movie;

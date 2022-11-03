@@ -1,12 +1,12 @@
 package com.clone.magabox.reservation.service;
 
-import com.clone.magabox.dto.request.ReservationRequestDto;
-import com.clone.magabox.dto.response.ReservationResponseDto;
-import com.clone.magabox.dto.response.ResponseDto;
-import com.clone.magabox.entity.Reservation;
-import com.clone.magabox.entity.StartTime;
+import com.clone.magabox.reservation.dto.request.ReservationRequestDto;
+import com.clone.magabox.reservation.dto.response.ReservationResponseDto;
+import com.clone.magabox.reservation.entity.StartTime;
+import com.clone.magabox.util.ResponseDto;
+import com.clone.magabox.starttime.entity.Reservation;
 import com.clone.magabox.member.service.MemberDetailsImpl;
-import com.clone.magabox.repository.StartTimeRepository;
+import com.clone.magabox.starttime.repository.StartTimeRepository;
 import com.clone.magabox.reservation.repository.ReservationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

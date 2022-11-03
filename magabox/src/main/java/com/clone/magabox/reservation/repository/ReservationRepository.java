@@ -1,7 +1,8 @@
 package com.clone.magabox.reservation.repository;
 
-import com.clone.magabox.entity.Member;
-import com.clone.magabox.entity.Reservation;
+
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.starttime.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

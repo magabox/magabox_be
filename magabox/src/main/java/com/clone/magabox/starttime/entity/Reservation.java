@@ -1,5 +1,7 @@
-package com.clone.magabox.entity;
+package com.clone.magabox.starttime.entity;
 
+import com.clone.magabox.member.entity.Member;
+import com.clone.magabox.reservation.entity.StartTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

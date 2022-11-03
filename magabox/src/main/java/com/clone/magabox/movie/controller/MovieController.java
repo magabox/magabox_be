@@ -4,7 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import com.clone.magabox.member.service.MemberDetailsImpl;
 import com.clone.magabox.movie.dto.request.MovieRequestDto;
 import com.clone.magabox.movie.service.MovieService;
-import com.clone.magabox.dto.response.ResponseDto;
+import com.clone.magabox.util.ResponseDto;
 import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 import java.io.IOException;

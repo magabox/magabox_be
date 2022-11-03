@@ -1,4 +1,4 @@
-package com.clone.magabox.dto.request;
+package com.clone.magabox.reservation.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
